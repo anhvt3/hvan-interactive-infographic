@@ -20,6 +20,13 @@
     <!-- Retro Noise Grain -->
     <div class="noise"></div>
 
+    <!-- Fixed Side Chapter Indicator -->
+    <div class="chapter-indicator" id="chapter-indicator">
+        <span class="ci-label">Chương</span>
+        <span class="ci-num" id="ci-num">00</span>
+        <span class="ci-title" id="ci-title">Khởi đầu</span>
+    </div>
+
     <!-- ============================================ -->
     <!-- HERO: Cinematic Full-viewport Opening        -->
     <!-- ============================================ -->
@@ -38,12 +45,21 @@
         </div>
     </header>
 
+    <!-- Marquee Ticker -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span>★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★</span>
+            <span aria-hidden="true">★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★</span>
+        </div>
+    </div>
+
     <!-- ============================================ -->
     <!-- TIMELINE: Vertical Checkpoint History        -->
     <!-- ============================================ -->
-    <section id="timeline-section" class="paper-texture-bg">
+    <section id="timeline-section" class="paper-texture-bg chapter" data-chapter-num="01" data-chapter-title="Bối cảnh lịch sử">
+        <div class="chapter-numeral">01</div>
         <div class="container">
-            <h2 class="section-title text-center">Bối Cảnh Lịch Sử</h2>
+            <h2 class="section-title text-center reveal-mask">Bối Cảnh Lịch Sử</h2>
             <p class="section-subtitle text-center">Ngọn lửa rèn nên sức mạnh an ninh nhân dân</p>
             <div class="section-divider"></div>
         </div>
@@ -132,7 +148,15 @@
     <!-- ============================================ -->
     <!-- DAK LAK 2023: Immersive Background Section   -->
     <!-- ============================================ -->
-    <section id="scrolly-daklak" class="scrolly-section dark-theme">
+    <!-- Marquee Ticker 2 -->
+    <div class="marquee-strip marquee-dark">
+        <div class="marquee-track">
+            <span>⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠</span>
+            <span aria-hidden="true">⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠</span>
+        </div>
+    </div>
+
+    <section id="scrolly-daklak" class="scrolly-section dark-theme chapter" data-chapter-num="02" data-chapter-title="Thép đã tôi">
         <figure class="daklak-figure sticky-graphic-bg">
              <img src="assets/images/police_action.png" alt="Lực lượng cơ động" id="daklak-visual-img" class="daklak-visual">
              <div class="daklak-overlay-filter"></div>
@@ -152,7 +176,13 @@
 
             <div class="step glass-card" data-step="dl-3">
                 <div class="stat-highlight">
-                    <span class="stat-number">09</span>
+                    <div class="stat-circle">
+                        <svg class="stat-arc" viewBox="0 0 120 120">
+                            <circle class="arc-bg" cx="60" cy="60" r="54" />
+                            <circle class="arc-fg" cx="60" cy="60" r="54" />
+                        </svg>
+                        <span class="stat-number" data-count="9">00</span>
+                    </div>
                     <span class="stat-text">Sinh viên HVAN dũng cảm tham gia tác chiến bảo vệ địa bàn</span>
                 </div>
                 <div class="pull-quote dark-quote">
@@ -166,9 +196,10 @@
     <!-- ============================================ -->
     <!-- RESPONSIBILITY: Cards Section                -->
     <!-- ============================================ -->
-    <section class="responsibility-section paper-texture-bg" id="responsibility">
+    <section class="responsibility-section paper-texture-bg chapter" id="responsibility" data-chapter-num="03" data-chapter-title="Trách nhiệm">
+        <div class="chapter-numeral">03</div>
         <div class="container">
-            <h2 class="section-title text-center">Trách Nhiệm & Niềm Tự Hào</h2>
+            <h2 class="section-title text-center reveal-mask">Trách Nhiệm & Niềm Tự Hào</h2>
             <div class="section-divider"></div>
             <p class="section-desc text-center">Bảo vệ An ninh Tổ quốc không chỉ là nhiệm vụ của lực lượng vũ trang, mà là trách nhiệm thiêng liêng của toàn dân trong kỷ nguyên số.</p>
 
@@ -201,9 +232,9 @@
         </div>
         <div class="container relative z-index-top">
             <div class="quote-block">
-                <blockquote>
+                <blockquote class="kinetic-quote">
                     <span class="giant-quote">"</span>
-                    Chúng ta sẽ sống một tuổi trẻ cháy rực khát vọng cống hiến. Sẵn sàng viết tiếp bản thiết kế vĩ đại của nền hòa bình dân tộc mà cha ông đã đánh đổi bằng cả máu xương...
+                    <span class="word">Chúng</span> <span class="word">ta</span> <span class="word">sẽ</span> <span class="word">sống</span> <span class="word">một</span> <span class="word">tuổi</span> <span class="word">trẻ</span> <span class="word accent">cháy</span> <span class="word accent">rực</span> <span class="word">khát</span> <span class="word">vọng</span> <span class="word">cống</span> <span class="word">hiến.</span> <span class="word">Sẵn</span> <span class="word">sàng</span> <span class="word">viết</span> <span class="word">tiếp</span> <span class="word">bản</span> <span class="word">thiết</span> <span class="word">kế</span> <span class="word accent">vĩ</span> <span class="word accent">đại</span> <span class="word">của</span> <span class="word">nền</span> <span class="word">hòa</span> <span class="word">bình</span> <span class="word">dân</span> <span class="word">tộc</span> <span class="word">mà</span> <span class="word">cha</span> <span class="word">ông</span> <span class="word">đã</span> <span class="word">đánh</span> <span class="word">đổi</span> <span class="word">bằng</span> <span class="word">cả</span> <span class="word accent">máu</span> <span class="word accent">xương...</span>
                 </blockquote>
                 <cite class="signature">— Lời thề dưới cờ, Học viện An ninh Nhân dân</cite>
             </div>

@@ -682,9 +682,204 @@ blockquote {
 .z-index-top { z-index: 10; }
 
 /* ================================================
+   SIDE CHAPTER INDICATOR (fixed, vertical)
+   ================================================ */
+.chapter-indicator {
+    position: fixed;
+    top: 50%;
+    left: 24px;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--accent-red);
+    font-family: var(--font-heading);
+    letter-spacing: 4px;
+    opacity: 0;
+    transition: opacity 0.6s ease, color 0.6s ease;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    filter: invert(1);
+}
+.chapter-indicator.visible { opacity: 0.75; }
+.chapter-indicator .ci-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+.chapter-indicator .ci-num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent-gold);
+}
+.chapter-indicator .ci-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* ================================================
+   MARQUEE TICKER STRIP
+   ================================================ */
+.marquee-strip {
+    overflow: hidden;
+    background: var(--accent-red);
+    color: #fbe8b8;
+    border-top: 2px solid var(--accent-gold);
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 14px 0;
+    position: relative;
+}
+.marquee-strip.marquee-dark {
+    background: #0a0a0a;
+    color: var(--accent-gold);
+    border-color: var(--accent-red-bright);
+}
+.marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: marqueeScroll 40s linear infinite;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+.marquee-track span { flex-shrink: 0; }
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ================================================
+   CHAPTER NUMERAL (giant outlined number)
+   ================================================ */
+.chapter {
+    position: relative;
+}
+.chapter-numeral {
+    position: absolute;
+    top: 2.5rem;
+    right: 4%;
+    font-family: var(--font-heading);
+    font-size: clamp(8rem, 18vw, 18rem);
+    font-weight: 900;
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(139, 0, 0, 0.25);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    letter-spacing: -0.04em;
+}
+.dark-theme .chapter-numeral {
+    -webkit-text-stroke: 2px rgba(212, 175, 55, 0.18);
+}
+
+/* ================================================
+   REVEAL MASK (section title slide reveal)
+   ================================================ */
+.reveal-mask {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+.reveal-mask::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent-red);
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 0.9s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.reveal-mask.revealed::after {
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+/* ================================================
+   STAT COUNTER + SVG ARC
+   ================================================ */
+.stat-circle {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stat-arc {
+    position: absolute;
+    inset: 0;
+    transform: rotate(-90deg);
+}
+.stat-arc circle {
+    fill: none;
+    stroke-width: 4;
+}
+.stat-arc .arc-bg {
+    stroke: rgba(255,255,255,0.08);
+}
+.stat-arc .arc-fg {
+    stroke: var(--accent-gold);
+    stroke-dasharray: 339.29;
+    stroke-dashoffset: 339.29;
+    transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 8px rgba(212,175,55,0.6));
+}
+.glass-card.is-active .stat-arc .arc-fg {
+    stroke-dashoffset: 33.93; /* 10% gap = 9/10 */
+}
+.stat-circle .stat-number {
+    position: relative;
+    z-index: 1;
+    font-size: 3.8rem;
+}
+
+/* ================================================
+   DUOTONE FILTER (timeline images — retro print)
+   ================================================ */
+.timeline-img {
+    filter: sepia(0.6) contrast(1.15) hue-rotate(-15deg) saturate(1.2);
+    mix-blend-mode: multiply;
+}
+
+/* ================================================
+   KINETIC QUOTE (word-by-word reveal)
+   ================================================ */
+.kinetic-quote .word {
+    display: inline-block;
+    opacity: 0.15;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.5s ease;
+}
+.kinetic-quote.playing .word {
+    opacity: 1;
+    transform: translateY(0);
+}
+.kinetic-quote .word.accent {
+    color: var(--accent-gold);
+    font-style: italic;
+}
+.kinetic-quote .word {
+    transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+/* ================================================
    RESPONSIVE
    ================================================ */
 @media (max-width: 768px) {
+    .chapter-indicator { display: none; }
+    .chapter-numeral { font-size: 6rem; right: 2%; opacity: 0.7; }
+    .stat-circle { width: 100px; height: 100px; }
+    .stat-circle .stat-number { font-size: 2.6rem; }
+    .marquee-track { font-size: 0.85rem; letter-spacing: 3px; }
+
     .timeline::before { left: 20px; }
     .timeline::after { left: 20px; }
 
