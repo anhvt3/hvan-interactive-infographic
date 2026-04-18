@@ -1,85 +1,104 @@
-// --- Interactive Scrollytelling Engine ---
+// ================================================
+// INTERACTIVE SCROLLYTELLING ENGINE
+// Timeline checkpoint animations + Progress bar
+// ================================================
 
-// Elements
 const progressBar = document.getElementById('progress-bar');
-const historyGraphic = document.getElementById('history-graphic');
-const dateDisplay = historyGraphic ? historyGraphic.querySelector('.date-display') : null;
+const timeline = document.getElementById('timeline');
 
-// Update Progress Bar
+// --- Progress Bar ---
 window.addEventListener('scroll', () => {
     const scrollPx = document.documentElement.scrollTop;
     const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = `${(scrollPx / winHeightPx) * 100}%`;
+    const scrolled = (scrollPx / winHeightPx) * 100;
     if (progressBar) {
-        progressBar.style.width = scrolled;
+        progressBar.style.width = scrolled + '%';
+    }
+
+    // --- Timeline progress line ---
+    if (timeline) {
+        const timelineRect = timeline.getBoundingClientRect();
+        const timelineTop = timeline.offsetTop;
+        const timelineHeight = timeline.offsetHeight;
+        const scrollRelative = scrollPx - timelineTop + window.innerHeight * 0.6;
+        const progress = Math.max(0, Math.min(100, (scrollRelative / timelineHeight) * 100));
+        timeline.style.setProperty('--timeline-progress', progress + '%');
+        // Apply to the ::after pseudo-element via inline style trick
+        // We'll use a CSS custom property instead
     }
 });
 
-// Initialize Scrollama
+// --- Timeline Checkpoint Observer ---
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -10% 0px'
+});
+
+timelineItems.forEach(item => timelineObserver.observe(item));
+
+// --- Scrollama for Dak Lak Glass Cards ---
 const scroller = scrollama();
 
 function initScrollama() {
-    // History Section Scroller
     scroller
         .setup({
-            step: '.step',          // Target all step elements
-            offset: 0.6,            // Trigger when step crosses 60% of viewport from top
-            debug: false             // Set to true to see trigger line during dev
+            step: '.glass-card',
+            offset: 0.6,
+            debug: false
         })
         .onStepEnter(response => {
-            // response = { element, direction, index }
-            
-            // 1. Add active class to current step (fades in, slides up)
-            // First remove is-active from all steps
-            document.querySelectorAll('.step').forEach(el => el.classList.remove('is-active'));
-            // Then add to current
+            document.querySelectorAll('.glass-card').forEach(el => el.classList.remove('is-active'));
             response.element.classList.add('is-active');
-
-            // 2. Handle History Sticky Graphic changes
-            const parentSection = response.element.closest('section');
-            if (parentSection && parentSection.id === 'scrolly-history') {
-                const dateData = response.element.getAttribute('data-date');
-                const colorData = response.element.getAttribute('data-color');
-                
-                if (dateDisplay && dateData) {
-                    dateDisplay.textContent = dateData;
-                }
-                if (historyGraphic && colorData) {
-                    historyGraphic.style.backgroundColor = colorData;
-                }
-            }
-
-            // 3. Handle Dak Lak Section (if we had specific changes inside the sticky-bg)
-            if (parentSection && parentSection.id === 'scrolly-daklak') {
-                // Here we could change the background image based on step index 
-                // e.g. document.getElementById('daklak-visual-img').src = 'new-image.png';
-            }
-        })
-        .onStepExit(response => {
-             // Optional: Handle what happens when a step leaves the viewport completely
-             // response.element.classList.remove('is-active'); 
-             // We keep it active while inside, or remove it. For 'E-Magazine' feel usually we let the next step take over.
         });
 
-    // Handle Resize
     window.addEventListener('resize', scroller.resize);
 }
 
-// Ensure DOM is loaded
+// --- Responsibility Cards Reveal ---
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 150);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.old-paper-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    cardObserver.observe(card);
+});
+
+// --- Quote Block Reveal ---
+const quoteObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.quote-block').forEach(block => {
+    block.style.opacity = '0';
+    block.style.transform = 'translateY(40px)';
+    block.style.transition = 'opacity 1s ease, transform 1s ease';
+    quoteObserver.observe(block);
+});
+
+// --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
     initScrollama();
-    
-    // Fallback animation trigger for elements that fade-up but aren't scrollama steps
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-            }
-        });
-    });
-    
-    document.querySelectorAll('.fade-up:not(header *)').forEach(el => {
-        el.style.animationPlayState = 'paused'; // pause until scrolled into view
-        observer.observe(el);
-    });
 });
