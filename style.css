@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
     mix-blend-mode: multiply;
     pointer-events: none;
     z-index: 9998;
-    opacity: 0.35;
+    opacity: 0.12;
 }
 
 /* Subtle noise grain on top */
