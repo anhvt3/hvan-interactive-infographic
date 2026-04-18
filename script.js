@@ -1,115 +1,85 @@
-document.addEventListener('DOMContentLoaded', () => {
+// --- Interactive Scrollytelling Engine ---
 
-    // --- 1. HERO ANIMATIONS ---
-    setTimeout(() => {
-        const heroTexts = document.querySelectorAll('#hero .animate-text');
-        heroTexts.forEach(text => {
-            text.style.opacity = '1';
-            text.style.transform = 'translateY(0)';
-            text.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-        });
-    }, 100);
+// Elements
+const progressBar = document.getElementById('progress-bar');
+const historyGraphic = document.getElementById('history-graphic');
+const dateDisplay = historyGraphic ? historyGraphic.querySelector('.date-display') : null;
 
-    // --- 2. SCROLLAMA INTIALIZATION ---
-    // Instantiate the scrollama
-    const scrollerHistory = scrollama();
-    const scrollerDaklak = scrollama();
+// Update Progress Bar
+window.addEventListener('scroll', () => {
+    const scrollPx = document.documentElement.scrollTop;
+    const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = `${(scrollPx / winHeightPx) * 100}%`;
+    if (progressBar) {
+        progressBar.style.width = scrolled;
+    }
+});
 
-    // Variables for History visual
-    const historyFigure = document.querySelector('#history-graphic');
-    const dateDisplay = document.querySelector('.date-display');
+// Initialize Scrollama
+const scroller = scrollama();
 
-    // History Setup
-    scrollerHistory
+function initScrollama() {
+    // History Section Scroller
+    scroller
         .setup({
-            step: '#scrolly-history article .step',
-            offset: 0.5, // trigger at 50% of screen height
-            debug: false
+            step: '.step',          // Target all step elements
+            offset: 0.6,            // Trigger when step crosses 60% of viewport from top
+            debug: false             // Set to true to see trigger line during dev
         })
-        .onStepEnter((response) => {
+        .onStepEnter(response => {
             // response = { element, direction, index }
             
-            // Remove active class from all steps
-            const allSteps = document.querySelectorAll('#scrolly-history article .step');
-            allSteps.forEach(el => el.classList.remove('is-active'));
-            
-            // Add active class to current step
-            response.element.classList.add('is-active');
-            
-            // Update Graphic based on step dataset
-            const dateStr = response.element.getAttribute('data-date');
-            const bgColor = response.element.getAttribute('data-color');
-            
-            // Update DOM
-            dateDisplay.innerText = dateStr;
-            historyFigure.style.backgroundColor = bgColor;
-            
-            // simple visual effect
-            dateDisplay.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                dateDisplay.style.transform = 'scale(1)';
-            }, 300);
-        });
-
-    // Variables for DakLak visual
-    const daklakImage = document.querySelector('#daklak-visual-img');
-    const daklakOverlay = document.querySelector('.daklak-overlay-filter');
-
-    // Daklak Setup
-    scrollerDaklak
-        .setup({
-            step: '#scrolly-daklak article .step',
-            offset: 0.7,
-            debug: false
-        })
-        .onStepEnter((response) => {
-            const allSteps = document.querySelectorAll('#scrolly-daklak article .step');
-            allSteps.forEach(el => el.classList.remove('is-active'));
+            // 1. Add active class to current step (fades in, slides up)
+            // First remove is-active from all steps
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('is-active'));
+            // Then add to current
             response.element.classList.add('is-active');
 
-            const stepIndex = response.element.getAttribute('data-step');
-            
-            if(stepIndex === 'dl-1') {
-                daklakImage.style.transform = 'scale(1)';
-                daklakOverlay.style.background = 'linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(200,16,46,0.3) 100%)';
-            } else if(stepIndex === 'dl-2') {
-                daklakImage.style.transform = 'scale(1.1)';
-                daklakOverlay.style.background = 'linear-gradient(to right, rgba(0,0,0,0.85) 40%, rgba(200,16,46,0.4) 100%)';
-            } else if(stepIndex === 'dl-3') {
-                daklakImage.style.transform = 'scale(1.2)';
-                daklakImage.style.filter = 'sepia(0) hue-rotate(0deg) contrast(1.1)';
-                daklakOverlay.style.background = 'linear-gradient(to right, rgba(0,0,0,0.8) 50%, rgba(200,16,46,0.1) 100%)';
-            } else if(stepIndex === 'dl-4') {
-                daklakImage.style.transform = 'scale(1.05)';
-                daklakOverlay.style.background = 'linear-gradient(to right, rgba(0,0,0,0.95) 20%, rgba(200,16,46,0.3) 100%)';
+            // 2. Handle History Sticky Graphic changes
+            const parentSection = response.element.closest('section');
+            if (parentSection && parentSection.id === 'scrolly-history') {
+                const dateData = response.element.getAttribute('data-date');
+                const colorData = response.element.getAttribute('data-color');
+                
+                if (dateDisplay && dateData) {
+                    dateDisplay.textContent = dateData;
+                }
+                if (historyGraphic && colorData) {
+                    historyGraphic.style.backgroundColor = colorData;
+                }
             }
+
+            // 3. Handle Dak Lak Section (if we had specific changes inside the sticky-bg)
+            if (parentSection && parentSection.id === 'scrolly-daklak') {
+                // Here we could change the background image based on step index 
+                // e.g. document.getElementById('daklak-visual-img').src = 'new-image.png';
+            }
+        })
+        .onStepExit(response => {
+             // Optional: Handle what happens when a step leaves the viewport completely
+             // response.element.classList.remove('is-active'); 
+             // We keep it active while inside, or remove it. For 'E-Magazine' feel usually we let the next step take over.
         });
 
-    // Resize observer to update scrollama on window resize
-    window.addEventListener('resize', () => {
-        scrollerHistory.resize();
-        scrollerDaklak.resize();
-    });
+    // Handle Resize
+    window.addEventListener('resize', scroller.resize);
+}
 
-    // --- 3. OTHER ANIMATIONS ---
-    // Intersection Observer for generic fade-up elements
+// Ensure DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    initScrollama();
+    
+    // Fallback animation trigger for elements that fade-up but aren't scrollama steps
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.style.animationPlayState = 'running';
             }
         });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Parallax effect for visuals
-    const parallaxImages = document.querySelectorAll('.parallax');
-    window.addEventListener('scroll', () => {
-        let scrollY = window.pageYOffset;
-        parallaxImages.forEach(img => {
-            const speed = img.getAttribute('data-speed');
-            img.style.transform = `translateY(${scrollY * speed}px)`;
-        });
+    });
+    
+    document.querySelectorAll('.fade-up:not(header *)').forEach(el => {
+        el.style.animationPlayState = 'paused'; // pause until scrolled into view
+        observer.observe(el);
     });
 });

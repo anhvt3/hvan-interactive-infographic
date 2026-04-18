@@ -3,60 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sức Mạnh An Ninh - Nhịp Đập Lịch Sử</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Hành Trình Lịch Sử An Ninh Nhân Dân</title>
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Include Scrollama -->
     <script src="https://unpkg.com/scrollama"></script>
 </head>
 <body>
+    
+    <!-- E-Magazine Style Progress Bar -->
+    <div id="progress-bar"></div>
 
-    <!-- 1. Hero Section -->
-    <section class="hero-section" id="hero">
+    <!-- Retro Noise Overlay (Subtle) -->
+    <div class="noise"></div>
+
+    <!-- Cinematic Hero Section -->
+    <header class="hero cinematic">
+        <div class="hero-bg cinematic-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title animate-text">Áo Trắng Tình Báo,<br>Trái Tim Thép An Ninh</h1>
-            <p class="hero-subtitle animate-text delay-1">Hành trình 80 năm bảo vệ an ninh Tổ quốc, những trang sử hào hùng và ngọn lửa niềm tin vững bước tới tương lai.</p>
+            <div class="subtitle-badge fade-up">Báo Cáo Tương Tác Đặc Biệt</div>
+            <h1 class="hero-title fade-up delay-1">Hành Trình Gió Bụi</h1>
+            <h2 class="hero-subtitle fade-up delay-2">VÀ NHỮNG NGHIỆP VỤ THẦM LẶNG</h2>
+            <div class="hero-divider fade-up delay-3"></div>
+            <p class="hero-intro fade-up delay-4">Nhìn lại 50 năm trưởng thành của Học viện An ninh Nhân dân qua những lăng kính lịch sử và trách nhiệm bảo vệ Tổ quốc giữa thời bình.</p>
         </div>
-        <div class="hero-visual parallax" data-speed="0.5">
-             <img src="assets/images/hero_soldier.png" alt="Chiến sĩ công an nhân dân" class="hero-image">
+        
+        <!-- Bouncing scroll indicator -->
+        <div class="scroll-indicator fade-up delay-5">
+            <span class="scroll-text">Cuộn Màn Hình Để Đọc</span>
+            <div class="mouse-icon">
+                <div class="wheel"></div>
+            </div>
         </div>
-    </section>
+    </header>
 
-    <!-- 2. Bối cảnh lịch sử - SCROLLYTELLING PATTERN -->
+    <!-- SECTION 1: INTRODUCTION & EARLY HISTORY (SIDE-BY-SIDE) -->
     <section id="scrolly-history" class="scrolly-section paper-texture-bg">
         <div class="container">
             <h2 class="section-title text-center">Bối Cảnh Lịch Sử: Ngọn Lửa Rèn Nên Sức Mạnh</h2>
+            <div class="section-divider"></div>
         </div>
+
         <div class="scrolly-container">
+            <!-- Sticky Graphic Container -->
             <figure class="sticky-graphic">
                 <div id="history-graphic">
-                    <div class="date-display">1940</div>
+                    <div class="date-display">1945</div>
                     <div class="visual-layer"></div>
                 </div>
             </figure>
 
+            <!-- Scrolling Content -->
             <article class="history-article">
-                <div class="step" data-step="1" data-date="Tháng 6/1940" data-color="#2c2724">
-                    <h3>Tháng 6/1940</h3>
-                    <p>Chính phủ Pháp đầu hàng phát xít Đức. Cách mạng Pháp lâm vào thoái trào, ảnh hưởng trực tiếp đến phong trào cách mạng Việt Nam. Đông Dương rung chuyển trước cục diện mới.</p>
+                <!-- Step 1 with Drop Cap and Pull Quote -->
+                <div class="step" data-step="1" data-date="Cách Mạng 1945" data-color="#2c2724">
+                    <p class="drop-cap">Ngày 2/9/1945, tại Quảng trường Ba Đình lịch sử, Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập. Tuy nhiên, chính quyền cách mạng non trẻ cùng lúc phải đối mặt với thù trong, giặc ngoài dồn dập.</p>
+                    
+                    <div class="pull-quote">
+                        <span class="quote-mark">“</span>
+                        <p>Kiên quyết trấn áp tàn dư phản động, bảo vệ thành quả cách mạng bằng mọi giá. Đó là lằn ranh sinh tử.</p>
+                    </div>
                 </div>
-                <div class="step" data-step="2" data-date="Tháng 9/1940" data-color="#4a0e0e">
-                    <h3>Tháng 9/1940</h3>
-                    <p>Phát xít Nhật xâm lược Đông Dương. Nhân dân ta chịu cảnh "một cổ hai tròng", mâu thuẫn dân tộc trở nên gay gắt hơn bao giờ hết. Tình thế đòi hỏi sự nổi dậy dứt khoát.</p>
+                
+                <div class="step" data-step="2" data-date="Khởi Thủy An Ninh" data-color="#4a0e0e">
+                    <p>Từ những đội trinh sát đầu tiên, lực lượng an ninh đã bắt đầu đặt nền móng cho hệ thống bảo vệ Đảng và nhân dân. Hoạt động chủ yếu trong bí mật, với vũ khí thô sơ nhưng ý chí kiên định.</p>
                 </div>
-                <div class="step" data-step="3" data-date="1941 - 1945" data-color="#8B0000">
-                    <h3>1941 - 1945</h3>
-                    <p>Các Đội Tự vệ đỏ, Đội Danh dự Việt Minh, Đội Trừ gian liên tiếp ra đời. Đây là tiền thân rèn giũa ý chí kiên trung của lực lượng vũ trang an ninh sau này, hoạt động bí mật trong lòng chảo địch.</p>
-                </div>
-                <div class="step" data-step="4" data-date="19/8/1945" data-color="#C8102E">
-                    <h3>19/8/1945</h3>
-                    <p>Ca khúc khải hoàn, Cách mạng Tháng Tám thành công. Lực lượng Công an nhân dân Việt Nam chính thức được khai sinh với Sở Liêm phóng (Bắc Bộ) - Dấu son chói lọi của lịch sử ngành.</p>
+                
+                <div class="step" data-step="3" data-date="Sự Ra Đời" data-color="#8B0000">
+                    <p>Các tổ chức Tiền thân như Sở Liêm phóng Bắc Bộ ra đời đánh dấu bước ngoặt mang tính lịch sử. Đây chính là những "viên gạch vàng" kiến tạo nên Tòa tháp An ninh Nhân dân vững chắc qua hàng thế kỷ.</p>
+                    <div class="image-within-text">
+                         <img src="assets/images/hero_soldier.png" alt="Chiến sĩ công an nhân dân">
+                         <span class="caption">Ảnh minh họa nét đẹp người Công an Cụ Hồ.</span>
+                    </div>
                 </div>
             </article>
         </div>
     </section>
 
-    <!-- 3. Vụ Đắk Lắk - SCROLLYTELLING FULL-BG PATTERN -->
+    <!-- SECTION 2: DAK LAK 2023 - IMMERSIVE BACKGROUND PARALLAX -->
     <section id="scrolly-daklak" class="scrolly-section dark-theme">
         <figure class="daklak-figure sticky-graphic-bg">
              <img src="assets/images/police_action.png" alt="Lực lượng cơ động" id="daklak-visual-img" class="daklak-visual dynamic-visual">
@@ -64,69 +89,63 @@
         </figure>
         
         <article class="daklak-article container">
-            <div class="step" data-step="dl-1">
-                <h2 class="section-title text-light">Thép Đã Tôi Thế Đấy: Điểm Nóng Đắk Lắk 2023</h2>
-                <p>Rạng sáng 11/6/2023, vụ khủng bố manh động xảy ra nhằm phá hoại khối đại đoàn kết. Cả nước hướng về Tây Nguyên.</p>
+            <div class="step glass-card" data-step="dl-1">
+                <p class="drop-cap">Rạng sáng ngày 11 tháng 06 năm 2023, bình yên của đại ngàn Tây Nguyên bị xé toạc bởi tiếng súng chát chúa. Một nhóm đối tượng trang bị vũ khí tấn công quy mô vào trụ sở xã Ea Tiêu và Ea Ktur, thiết lập một màn kịch đẫm máu nhằm gây chia rẽ khối đại đoàn kết.</p>
             </div>
-            <div class="step" data-step="dl-2">
-                <div class="stat-box">
-                    <span class="stat-number">1</span>
-                    <span class="stat-label">Tuần Truy Quét</span>
-                </div>
-                <p>Chỉ trong 1 tuần, lực lượng Công an phối hợp cùng quân đội đồng loạt ra quân bủa lưới, chốt chặn mọi nẻo đường rừng biên giới.</p>
+            
+            <div class="step glass-card" data-step="dl-2">
+                <p>Với sự mưu trí, dũng cảm và sẵn sàng hy sinh, lực lượng Công an nhân dân đã kịp thời trấn áp. Đặc biệt, <strong>chín sinh viên khóa D54 Học viện An ninh Nhân dân</strong>, trong quá trình thực tập tại địa phương, đã sát cánh cùng nhân dân chặn đứng âm mưu phản động.</p>
             </div>
-            <div class="step" data-step="dl-3">
-                <div class="stat-box">
-                    <span class="stat-number">90+</span>
-                    <span class="stat-label">Đối Tượng Bị Bắt Giữ</span>
+            
+            <div class="step glass-card" data-step="dl-3">
+                <div class="stat-highlight">
+                    <span class="stat-number">09</span>
+                    <span class="stat-text">Sinh viên HVAN dũng cảm tham gia tác chiến bảo vệ địa bàn.</span>
                 </div>
-                <p>Sự quyết đoán và nghiệp vụ sắc bén đã tóm gọn toàn bộ toán khủng bố. Không một ai lọt lưới pháp luật, làm chủ hoàn toàn điểm nóng.</p>
-            </div>
-            <div class="step" data-step="dl-4">
-                <div class="highlight-quote">
-                    <p>“Sự đồng lòng của nhân dân bản địa chính là sức mạnh giúp dập tắt mầm mống phản động nhanh nhất, chứng minh thế trận lòng dân vững chắc.”</p>
-                </div>
+                <p>Sự đồng lòng của nhân dân bản địa chính là sức mạnh giúp dập tắt mầm mống phản động nhanh nhất, chứng minh thế trận lòng dân vững chắc.</p>
             </div>
         </article>
     </section>
 
-    <!-- 4. Trách nhiệm toàn dân -->
+    <!-- SECTION 3: RESPONSIBILITY & EPILOGUE -->
     <section class="responsibility-section paper-texture-bg" id="responsibility">
         <div class="container relative z-index-top">
-            <h2 class="section-title fade-up text-center">Trách Nhiệm & Niềm Tự Hào</h2>
-            <p class="section-desc fade-up text-center">Bảo vệ An ninh Tổ quốc không chỉ là nhiệm vụ của lực lượng vũ trang, mà là trách nhiệm thiêng liêng của toàn dân trong thời đại số.</p>
+            <h2 class="section-title text-center">Trách Nhiệm & Niềm Tự Hào</h2>
+            <div class="section-divider"></div>
+            <p class="section-desc text-center">Bảo vệ An ninh Tổ quốc không chỉ là nhiệm vụ của lực lượng vũ trang, mà là trách nhiệm thiêng liêng của toàn dân trong kỷ nguyên số.</p>
             
             <div class="cards-grid">
-                <div class="card fade-up old-paper-card">
+                <div class="card old-paper-card">
                     <div class="card-icon">🔐</div>
-                    <h3>Bảo vệ không gian mạng</h3>
-                    <p>Kháng cự lại tin giả, luận điệu xuyên tạc. Mỗi đoàn viên, sinh viên là một lá chắn thép trên mặt trận truyền thông số.</p>
+                    <h3>Không gian mạng</h3>
+                    <p>Kháng cự lại tin giả, luận điệu xuyên tạc. Mỗi đoàn viên, sinh viên là một lá chắn thép trên mặt trận truyền thông số đang ngày càng khốc liệt.</p>
                 </div>
-                <div class="card fade-up delay-1 old-paper-card">
+                <div class="card old-paper-card">
                     <div class="card-icon">🛡️</div>
                     <h3>Phong trào Toàn dân</h3>
-                    <p>Hưởng ứng mạnh mẽ phong trào toàn dân bảo vệ An ninh Tổ quốc. Tai mắt của nhân dân là bức tường thành vững chắc vững bền nhất.</p>
+                    <p>Hưởng ứng mạnh mẽ phong trào toàn dân bảo vệ An ninh Tổ quốc. Tai mắt của nhân dân là bức tường thành vững chắc vững bền nhất trước răn đe.</p>
                 </div>
-                <div class="card fade-up delay-2 old-paper-card">
+                <div class="card old-paper-card">
                     <div class="card-icon">🧠</div>
                     <h3>Hệ miễn dịch tri thức</h3>
-                    <p>Nâng cao "sức đề kháng" chính trị, trau dồi tri thức lịch sử và pháp luật để không bị lôi kéo, kích động trước thủ đoạn tinh vi.</p>
+                    <p>Nâng cao "sức đề kháng" chính trị, trau dồi tri thức lịch sử và pháp luật để không bị lôi kéo, kích động trước thủ đoạn tinh vi của các thế lực thù địch.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Kết bài -->
+    <!-- FOOTER: END EXHORTATION -->
     <section class="footer-section" id="footer">
-         <div class="footer-visual parallax" data-speed="-0.1">
+         <div class="footer-visual grayscale-bg">
              <img src="assets/images/student_future.png" alt="Thế hệ trẻ" class="footer-image">
          </div>
         <div class="container relative z-index-top">
-            <div class="quote-block fade-up">
+            <div class="quote-block">
                 <blockquote>
-                    "Chúng ta sẽ sống một tuổi trẻ cháy rực khát vọng cống hiến. Sẵn sàng viết tiếp bản thiết kế vĩ đại của cha ông..."
+                    <span class="giant-quote">"</span>
+                    Chúng ta sẽ sống một tuổi trẻ cháy rực khát vọng cống hiến. Sẵn sàng viết tiếp bản thiết kế vĩ đại của nền hòa bình dân tộc mà cha ông đã đánh đổi bằng cả máu xương...
                 </blockquote>
-                <cite>- Lời thề thanh niên Học viện</cite>
+                <cite class="signature">- Lời thề dưới cờ, Học viện An ninh Nhân dân</cite>
             </div>
         </div>
     </section>
