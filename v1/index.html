@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Lịch Sử An Ninh Nhân Dân</title>
+    <meta name="description" content="Báo cáo tương tác đặc biệt: 50 năm trưởng thành Học viện An ninh Nhân dân - Hành trình lịch sử và trách nhiệm bảo vệ Tổ quốc">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/scrollama" defer></script>
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Old Paper Texture Overlay (Global) -->
+    <div class="paper-overlay"></div>
+
+    <!-- Retro Noise Grain -->
+    <div class="noise"></div>
+
+    <!-- Fixed Side Chapter Indicator -->
+    <div class="chapter-indicator" id="chapter-indicator">
+        <span class="ci-label">Chương</span>
+        <span class="ci-num" id="ci-num">00</span>
+        <span class="ci-title" id="ci-title">Khởi đầu</span>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HERO: Cinematic Full-viewport Opening        -->
+    <!-- ============================================ -->
+    <header class="hero cinematic" id="hero">
+        <div class="hero-bg cinematic-bg"></div>
+        <div class="hero-content">
+            <div class="subtitle-badge fade-up delay-1">Báo Cáo Tương Tác Đặc Biệt</div>
+            <h1 class="hero-title fade-up delay-2">Hành Trình<br>Gió Bụi</h1>
+            <h2 class="hero-subtitle fade-up delay-3">VÀ NHỮNG NGHIỆP VỤ THẦM LẶNG</h2>
+            <div class="hero-divider fade-up delay-3"></div>
+            <p class="hero-intro fade-up delay-4">Nhìn lại 50 năm trưởng thành của Học viện An ninh Nhân dân qua những lăng kính lịch sử và trách nhiệm bảo vệ Tổ quốc giữa thời bình.</p>
+        </div>
+        <div class="scroll-indicator fade-up delay-5">
+            <span class="scroll-text">Cuộn Để Khám Phá</span>
+            <div class="mouse-icon"><div class="wheel"></div></div>
+        </div>
+    </header>
+
+    <!-- Marquee Ticker -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span>★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★</span>
+            <span aria-hidden="true">★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★ An Ninh Tổ Quốc ★ Thanh Kiếm & Lá Chắn ★ 50 Năm Trưởng Thành ★ Vì Nhân Dân Phục Vụ ★</span>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- TIMELINE: Vertical Checkpoint History        -->
+    <!-- ============================================ -->
+    <section id="timeline-section" class="paper-texture-bg chapter" data-chapter-num="01" data-chapter-title="Bối cảnh lịch sử">
+        <div class="chapter-numeral">01</div>
+        <div class="container">
+            <h2 class="section-title text-center reveal-mask">Bối Cảnh Lịch Sử</h2>
+            <p class="section-subtitle text-center">Ngọn lửa rèn nên sức mạnh an ninh nhân dân</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline" id="timeline">
+            <!-- The vertical line is drawn via CSS ::before on .timeline -->
+
+            <!-- Checkpoint 1 -->
+            <div class="timeline-item left" data-year="1940">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Tháng 6/1940</div>
+                <div class="timeline-card">
+                    <h3>Đông Dương rung chuyển</h3>
+                    <p>Chính phủ Pháp đầu hàng phát xít Đức. Cách mạng Pháp lâm vào thoái trào, ảnh hưởng trực tiếp đến phong trào cách mạng Việt Nam. Cục diện thế giới thay đổi chóng mặt.</p>
+                </div>
+            </div>
+
+            <!-- Checkpoint 2 -->
+            <div class="timeline-item right" data-year="1940">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Tháng 9/1940</div>
+                <div class="timeline-card">
+                    <h3>Một cổ hai tròng</h3>
+                    <p>Phát xít Nhật xâm lược Đông Dương. Nhân dân ta chịu cảnh "một cổ hai tròng", mâu thuẫn dân tộc trở nên gay gắt hơn bao giờ hết. Tình thế đòi hỏi sự nổi dậy dứt khoát.</p>
+                </div>
+            </div>
+
+            <!-- Checkpoint 3 -->
+            <div class="timeline-item left" data-year="1941">
+                <div class="timeline-dot pulse"></div>
+                <div class="timeline-date">1941 — 1945</div>
+                <div class="timeline-card">
+                    <h3>Tiền thân An ninh</h3>
+                    <p>Các Đội Tự vệ đỏ, Đội Danh dự Việt Minh, Đội Trừ gian liên tiếp ra đời. Đây là tiền thân rèn giũa ý chí kiên trung của lực lượng vũ trang an ninh sau này, hoạt động bí mật trong lòng chảo địch.</p>
+                    <div class="pull-quote-mini">
+                        <span class="qm">"</span>Kiên quyết trấn áp tàn dư phản động, bảo vệ thành quả cách mạng.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkpoint 4 — MILESTONE -->
+            <div class="timeline-item right milestone" data-year="1945">
+                <div class="timeline-dot milestone-dot"></div>
+                <div class="timeline-date">19/8/1945</div>
+                <div class="timeline-card milestone-card">
+                    <div class="milestone-badge">Dấu Son Lịch Sử</div>
+                    <h3>Cách mạng Tháng Tám</h3>
+                    <p class="drop-cap">Ca khúc khải hoàn! Cách mạng Tháng Tám thành công rực rỡ. Lực lượng Công an nhân dân Việt Nam chính thức được khai sinh với Sở Liêm phóng Bắc Bộ — Dấu son chói lọi mở ra thời kỳ mới cho lịch sử ngành.</p>
+                    <img src="../assets/images/hero_soldier.png" alt="Chiến sĩ Công an nhân dân" class="timeline-img">
+                </div>
+            </div>
+
+            <!-- Checkpoint 5 -->
+            <div class="timeline-item left" data-year="1954">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1946 — 1954</div>
+                <div class="timeline-card">
+                    <h3>Kháng chiến chống Pháp</h3>
+                    <p>Lực lượng an ninh bám sát chiến trường, phá tan nhiều mạng lưới gián điệp thực dân. Nghiệp vụ trinh sát được rèn giũa qua lửa đạn thực tế chiến tranh nhân dân trường kỳ.</p>
+                </div>
+            </div>
+
+            <!-- Checkpoint 6 -->
+            <div class="timeline-item right" data-year="1975">
+                <div class="timeline-dot pulse"></div>
+                <div class="timeline-date">30/4/1975</div>
+                <div class="timeline-card">
+                    <h3>Thống nhất đất nước</h3>
+                    <p>Đại thắng mùa Xuân 1975 giải phóng hoàn toàn miền Nam. An ninh nhân dân bước sang giai đoạn mới: bảo vệ thành quả cách mạng trong thời bình, đối mặt với diễn biến hòa bình và các thế lực phản động mới.</p>
+                </div>
+            </div>
+
+            <!-- Checkpoint 7 — MILESTONE -->
+            <div class="timeline-item left milestone" data-year="1975">
+                <div class="timeline-dot milestone-dot"></div>
+                <div class="timeline-date">12/1975</div>
+                <div class="timeline-card milestone-card">
+                    <div class="milestone-badge">Khai sinh HVAN</div>
+                    <h3>Thành lập Học viện</h3>
+                    <p>Học viện An ninh Nhân dân chính thức được thành lập, đánh dấu bước ngoặt trong đào tạo cán bộ an ninh chính quy, bài bản, trở thành cái nôi rèn luyện những "thanh kiếm và lá chắn" của Đảng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- DAK LAK 2023: Immersive Background Section   -->
+    <!-- ============================================ -->
+    <!-- Marquee Ticker 2 -->
+    <div class="marquee-strip marquee-dark">
+        <div class="marquee-track">
+            <span>⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠</span>
+            <span aria-hidden="true">⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠ Điểm Nóng Đắk Lắk ⚠ 11/06/2023 ⚠ Tây Nguyên ⚠ Thế Trận Lòng Dân ⚠</span>
+        </div>
+    </div>
+
+    <section id="scrolly-daklak" class="scrolly-section dark-theme chapter" data-chapter-num="02" data-chapter-title="Thép đã tôi">
+        <figure class="daklak-figure sticky-graphic-bg">
+             <img src="../assets/images/police_action.png" alt="Lực lượng cơ động" id="daklak-visual-img" class="daklak-visual">
+             <div class="daklak-overlay-filter"></div>
+        </figure>
+
+        <article class="daklak-article container">
+            <div class="step glass-card" data-step="dl-1">
+                <h2 class="section-title-light">Thép Đã Tôi Thế Đấy</h2>
+                <p class="section-subtitle-light">Điểm nóng Đắk Lắk, 11/06/2023</p>
+                <div class="section-divider gold"></div>
+                <p class="drop-cap">Rạng sáng ngày 11 tháng 06 năm 2023, bình yên của đại ngàn Tây Nguyên bị xé toạc bởi tiếng súng chát chúa. Một nhóm đối tượng trang bị vũ khí tấn công quy mô vào trụ sở xã Ea Tiêu và Ea Ktur, huyện Cư Kuin, thiết lập một màn kịch đẫm máu nhằm gây chia rẽ khối đại đoàn kết.</p>
+            </div>
+
+            <div class="step glass-card" data-step="dl-2">
+                <p>Với sự mưu trí, dũng cảm và sẵn sàng hy sinh, lực lượng Công an nhân dân đã kịp thời trấn áp. Đặc biệt, <strong>chín sinh viên khóa D54 Học viện An ninh Nhân dân</strong>, trong quá trình thực tập tại địa phương, đã sát cánh cùng nhân dân chặn đứng âm mưu phản động.</p>
+            </div>
+
+            <div class="step glass-card" data-step="dl-3">
+                <div class="stat-highlight">
+                    <div class="stat-circle">
+                        <svg class="stat-arc" viewBox="0 0 120 120">
+                            <circle class="arc-bg" cx="60" cy="60" r="54" />
+                            <circle class="arc-fg" cx="60" cy="60" r="54" />
+                        </svg>
+                        <span class="stat-number" data-count="9">00</span>
+                    </div>
+                    <span class="stat-text">Sinh viên HVAN dũng cảm tham gia tác chiến bảo vệ địa bàn</span>
+                </div>
+                <div class="pull-quote dark-quote">
+                    <span class="quote-mark">"</span>
+                    <p>Sự đồng lòng của nhân dân bản địa chính là sức mạnh giúp dập tắt mầm mống phản động nhanh nhất, chứng minh thế trận lòng dân vững chắc.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- RESPONSIBILITY: Cards Section                -->
+    <!-- ============================================ -->
+    <section class="responsibility-section paper-texture-bg chapter" id="responsibility" data-chapter-num="03" data-chapter-title="Trách nhiệm">
+        <div class="chapter-numeral">03</div>
+        <div class="container">
+            <h2 class="section-title text-center reveal-mask">Trách Nhiệm & Niềm Tự Hào</h2>
+            <div class="section-divider"></div>
+            <p class="section-desc text-center">Bảo vệ An ninh Tổ quốc không chỉ là nhiệm vụ của lực lượng vũ trang, mà là trách nhiệm thiêng liêng của toàn dân trong kỷ nguyên số.</p>
+
+            <div class="cards-grid">
+                <div class="card old-paper-card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Không gian mạng</h3>
+                    <p>Kháng cự lại tin giả, luận điệu xuyên tạc. Mỗi đoàn viên, sinh viên là một lá chắn thép trên mặt trận truyền thông số đang ngày càng khốc liệt.</p>
+                </div>
+                <div class="card old-paper-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Phong trào Toàn dân</h3>
+                    <p>Hưởng ứng mạnh mẽ phong trào toàn dân bảo vệ An ninh Tổ quốc. Tai mắt của nhân dân là bức tường thành vững bền nhất.</p>
+                </div>
+                <div class="card old-paper-card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Hệ miễn dịch tri thức</h3>
+                    <p>Nâng cao "sức đề kháng" chính trị, trau dồi tri thức lịch sử và pháp luật để không bị lôi kéo trước thủ đoạn tinh vi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER: End Exhortation                      -->
+    <!-- ============================================ -->
+    <section class="footer-section" id="footer">
+        <div class="footer-visual grayscale-bg">
+            <img src="../assets/images/student_future.png" alt="Thế hệ trẻ" class="footer-image">
+        </div>
+        <div class="container relative z-index-top">
+            <div class="quote-block">
+                <blockquote class="kinetic-quote">
+                    <span class="giant-quote">"</span>
+                    <span class="word">Chúng</span> <span class="word">ta</span> <span class="word">sẽ</span> <span class="word">sống</span> <span class="word">một</span> <span class="word">tuổi</span> <span class="word">trẻ</span> <span class="word accent">cháy</span> <span class="word accent">rực</span> <span class="word">khát</span> <span class="word">vọng</span> <span class="word">cống</span> <span class="word">hiến.</span> <span class="word">Sẵn</span> <span class="word">sàng</span> <span class="word">viết</span> <span class="word">tiếp</span> <span class="word">bản</span> <span class="word">thiết</span> <span class="word">kế</span> <span class="word accent">vĩ</span> <span class="word accent">đại</span> <span class="word">của</span> <span class="word">nền</span> <span class="word">hòa</span> <span class="word">bình</span> <span class="word">dân</span> <span class="word">tộc</span> <span class="word">mà</span> <span class="word">cha</span> <span class="word">ông</span> <span class="word">đã</span> <span class="word">đánh</span> <span class="word">đổi</span> <span class="word">bằng</span> <span class="word">cả</span> <span class="word accent">máu</span> <span class="word accent">xương...</span>
+                </blockquote>
+                <cite class="signature">— Lời thề dưới cờ, Học viện An ninh Nhân dân</cite>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
