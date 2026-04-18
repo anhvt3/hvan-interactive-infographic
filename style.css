@@ -474,7 +474,7 @@ h1, h2, h3, h4 {
 .daklak-visual {
     width: 100%; height: 100%;
     object-fit: cover;
-    filter: grayscale(80%) contrast(1.2) brightness(0.5);
+    filter: grayscale(80%) contrast(1.2) brightness(0.3);
 }
 
 .daklak-overlay-filter {
@@ -497,23 +497,28 @@ h1, h2, h3, h4 {
 
 /* Glassmorphism cards */
 .glass-card {
-    background: rgba(15, 15, 15, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(212, 175, 55, 0.18);
     border-radius: 10px;
     padding: 3rem;
     margin-bottom: 40vh;
-    color: #f0e9df;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    opacity: 0.15;
+    color: #f5efe3;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    opacity: 0.55;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease;
+}
+
+.glass-card p, .glass-card h2, .glass-card .stat-text {
+    color: #f5efe3;
 }
 
 .glass-card.is-active {
     opacity: 1;
     transform: translateY(0);
+    border-color: rgba(212, 175, 55, 0.45);
 }
 
 .glass-card .drop-cap::first-letter { color: var(--accent-gold); }

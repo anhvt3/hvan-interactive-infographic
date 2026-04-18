@@ -54,7 +54,7 @@ function initScrollama() {
     scroller
         .setup({
             step: '.glass-card',
-            offset: 0.6,
+            offset: 0.75,
             debug: false
         })
         .onStepEnter(response => {
