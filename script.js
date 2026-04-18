@@ -6,27 +6,30 @@
 const progressBar = document.getElementById('progress-bar');
 const timeline = document.getElementById('timeline');
 
-// --- Progress Bar ---
-window.addEventListener('scroll', () => {
+// --- Progress Bar + Timeline fill (rAF throttled) ---
+let scrollTicking = false;
+function onScrollUpdate() {
     const scrollPx = document.documentElement.scrollTop;
     const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (scrollPx / winHeightPx) * 100;
-    if (progressBar) {
-        progressBar.style.width = scrolled + '%';
-    }
+    if (progressBar) progressBar.style.width = scrolled + '%';
 
-    // --- Timeline progress line ---
     if (timeline) {
-        const timelineRect = timeline.getBoundingClientRect();
         const timelineTop = timeline.offsetTop;
         const timelineHeight = timeline.offsetHeight;
         const scrollRelative = scrollPx - timelineTop + window.innerHeight * 0.6;
         const progress = Math.max(0, Math.min(100, (scrollRelative / timelineHeight) * 100));
         timeline.style.setProperty('--timeline-progress', progress + '%');
-        // Apply to the ::after pseudo-element via inline style trick
-        // We'll use a CSS custom property instead
     }
-});
+    scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        requestAnimationFrame(onScrollUpdate);
+        scrollTicking = true;
+    }
+}, { passive: true });
 
 // --- Timeline Checkpoint Observer ---
 const timelineItems = document.querySelectorAll('.timeline-item');
